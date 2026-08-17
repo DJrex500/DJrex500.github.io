@@ -680,12 +680,26 @@ main, .nav, .footer { position: relative; z-index: 2; }
 
 .feature__scene {
   position: relative;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 1 / 1;
   border-radius: var(--radius);
   overflow: hidden;
-  background: linear-gradient(180deg, #1a0b33 0%, #2c0f4d 45%, #120722 100%);
-  display: grid;
-  place-items: center;
+  border: 1px solid var(--line);
+  background: #120722;
+}
+.feature__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s var(--ease);
+}
+.feature__scene:hover .feature__img { transform: scale(1.06); }
+/* Blends the art's edges into the card instead of ending on a hard line */
+.feature__scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 45%, transparent 55%, rgba(11, 7, 18, .55));
 }
 .feature__badge {
   position: absolute;
@@ -700,55 +714,6 @@ main, .nav, .footer { position: relative; z-index: 2; }
   background: var(--grad-main);
   color: #fff;
 }
-.scene-grid {
-  position: absolute;
-  inset: 45% -50% -10% -50%;
-  background-image:
-    linear-gradient(rgba(210, 253, 255, .28) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(210, 253, 255, .28) 1px, transparent 1px);
-  background-size: 44px 44px;
-  transform: perspective(340px) rotateX(62deg);
-  animation: gridMove 6s linear infinite;
-  mask-image: linear-gradient(transparent, #000 40%);
-  -webkit-mask-image: linear-gradient(transparent, #000 40%);
-}
-@keyframes gridMove {
-  to { background-position: 0 44px; }
-}
-.scene-sun {
-  position: absolute;
-  top: 18%;
-  width: 130px; height: 130px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, var(--pink-orchid), var(--electric-indigo));
-  filter: blur(1px);
-  box-shadow: 0 0 70px rgba(224, 172, 213, .55);
-}
-.scene-storm {
-  position: absolute;
-  width: 74%;
-  aspect-ratio: 1;
-  border: 2px dashed rgba(30, 145, 214, .55);
-  border-radius: 50%;
-  animation: stormPulse 7s ease-in-out infinite;
-}
-@keyframes stormPulse {
-  50% { transform: scale(.72); opacity: .5; }
-}
-.scene-title {
-  position: relative;
-  z-index: 2;
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 4.4vw, 2.6rem);
-  font-weight: 800;
-  line-height: .95;
-  text-align: center;
-  color: var(--frozen-water);
-  text-shadow: 0 0 26px rgba(93, 3, 255, .9);
-}
-.scene-title span { color: var(--pink-orchid); }
-
 .feature__eyebrow {
   font-size: .82rem;
   letter-spacing: .12em;
