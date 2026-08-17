@@ -1,11 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hirad's Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hirad — Software Engineer &amp; Game Developer</title>
+<meta name="description" content="Portfolio of Hirad, a software engineer building games and interactive experiences for the web." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8E%AE</text></svg>" />
 </head>
 <body>
-  <h1>Hello!</h1>
+
+<div class="scroll-progress"><span id="progress-bar"></span></div>
+<div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#home" class="nav__logo">
+      <span class="nav__logo-mark">H</span>
+      <span class="nav__logo-text">hirad</span>
+    </a>
+
+    <nav class="nav__links" id="nav-links">
+      <a href="#home" class="nav__link is-active">Home</a>
+      <a href="#about" class="nav__link">About</a>
+      <a href="#skills" class="nav__link">Skills</a>
+      <a href="#projects" class="nav__link">Projects</a>
+      <a href="#contact" class="nav__link">Contact</a>
+      <a href="#contact" class="btn btn--small btn--primary nav__cta">Let's talk</a>
+    </nav>
+
+    <button class="nav__burger" id="nav-burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="orb orb--1" aria-hidden="true"></div>
+    <div class="orb orb--2" aria-hidden="true"></div>
+    <div class="orb orb--3" aria-hidden="true"></div>
+
+    <div class="container hero__inner">
+      <p class="hero__kicker reveal">
+        <span class="status-dot"></span> Available for new projects
+      </p>
+
+      <h1 class="hero__title reveal" data-delay="1">
+        Hey, I'm <span class="gradient-text">Hirad</span>
+      </h1>
+
+      <h2 class="hero__typed reveal" data-delay="2">
+        <span id="typed"></span><span class="caret" aria-hidden="true"></span>
+      </h2>
+
+      <p class="hero__lead reveal" data-delay="3">
+        A software engineer who builds games and interactive things for the web —
+        3D worlds, weapon systems, AI enemies, and the occasional storm circle.
+      </p>
+
+      <div class="hero__actions reveal" data-delay="4">
+        <a href="#projects" class="btn btn--primary">
+          View my work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#contact" class="btn btn--ghost">Get in touch</a>
+      </div>
+
+      <div class="hero__socials reveal" data-delay="5">
+        <a href="https://github.com/DJrex500" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.2c-3.34.72-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+        </a>
+        <a href="mailto:DJrex500@users.noreply.github.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 7 9 6 9-6"/></svg>
+        </a>
+        <a href="https://github.com/DJrex500/B-Shot-Royal" target="_blank" rel="noopener" aria-label="Featured project">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><rect x="2" y="6" width="20" height="12" rx="5"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <a href="#about" class="hero__scroll" aria-label="Scroll down">
+      <span class="mouse"><span class="wheel"></span></span>
+      <span class="hero__scroll-text">scroll</span>
+    </a>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="section__num">01</span>
+        <h2 class="section__title">About <span class="gradient-text">me</span></h2>
+        <p class="section__sub">Who's behind the keyboard</p>
+      </div>
+
+      <div class="about">
+        <div class="about__visual reveal">
+          <div class="avatar-card tilt">
+            <div class="avatar-card__glow"></div>
+            <div class="avatar-card__inner">
+              <div class="avatar">H</div>
+              <p class="avatar-card__name">Hirad</p>
+              <p class="avatar-card__role">Software Engineer</p>
+              <div class="avatar-card__chips">
+                <span>3D</span><span>Games</span><span>Web</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__text">
+          <p class="reveal" data-delay="1">
+            I'm a software engineer who got hooked on the moment code turns into something
+            you can actually <em>play</em>. Most of my time goes into building browser-based
+            games from scratch — no engine, just JavaScript, Three.js and a lot of iteration.
+          </p>
+          <p class="reveal" data-delay="2">
+            Right now I'm deep in <strong>B-Shot Royal</strong>, a battle royale that runs entirely
+            in the browser. Building it meant writing my own weapon system, building mechanics,
+            loot tables, a closing storm, and AI enemies that actually fight back.
+          </p>
+          <p class="reveal" data-delay="3">
+            When I'm not shipping features, I'm digging into 3D graphics, game physics,
+            and figuring out how to make multiplayer work over WebSockets.
+          </p>
+
+          <div class="stats reveal" data-delay="4">
+            <div class="stat">
+              <span class="stat__num" data-count="3">0</span>
+              <span class="stat__label">Projects shipped</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" data-count="7">0</span>
+              <span class="stat__label">Technologies</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" data-count="100" data-suffix="%">0</span>
+              <span class="stat__label">Built from scratch</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section section--alt" id="skills">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="section__num">02</span>
+        <h2 class="section__title">Skills &amp; <span class="gradient-text">tools</span></h2>
+        <p class="section__sub">What I build with</p>
+      </div>
+
+      <div class="skills">
+        <div class="skills__bars">
+          <div class="bar reveal">
+            <div class="bar__head"><span>JavaScript</span><span>90%</span></div>
+            <div class="bar__track"><div class="bar__fill" data-level="90"></div></div>
+          </div>
+          <div class="bar reveal" data-delay="1">
+            <div class="bar__head"><span>Three.js / WebGL</span><span>82%</span></div>
+            <div class="bar__track"><div class="bar__fill" data-level="82"></div></div>
+          </div>
+          <div class="bar reveal" data-delay="2">
+            <div class="bar__head"><span>HTML &amp; CSS</span><span>92%</span></div>
+            <div class="bar__track"><div class="bar__fill" data-level="92"></div></div>
+          </div>
+          <div class="bar reveal" data-delay="3">
+            <div class="bar__head"><span>Game architecture</span><span>75%</span></div>
+            <div class="bar__track"><div class="bar__fill" data-level="75"></div></div>
+          </div>
+        </div>
+
+        <div class="skills__grid">
+          <article class="skill-card tilt reveal" data-delay="1">
+            <div class="skill-card__icon">&lt;/&gt;</div>
+            <h3>Languages</h3>
+            <div class="chips">
+              <span>JavaScript</span><span>HTML5</span><span>CSS3</span>
+            </div>
+          </article>
+
+          <article class="skill-card tilt reveal" data-delay="2">
+            <div class="skill-card__icon">◈</div>
+            <h3>Graphics &amp; Games</h3>
+            <div class="chips">
+              <span>Three.js</span><span>WebGL</span><span>Canvas</span><span>Game physics</span>
+            </div>
+          </article>
+
+          <article class="skill-card tilt reveal" data-delay="3">
+            <div class="skill-card__icon">⚙</div>
+            <h3>Tooling</h3>
+            <div class="chips">
+              <span>Vite</span><span>Node.js</span><span>Git</span><span>GitHub Pages</span>
+            </div>
+          </article>
+
+          <article class="skill-card tilt reveal" data-delay="4">
+            <div class="skill-card__icon">◎</div>
+            <h3>Currently learning</h3>
+            <div class="chips">
+              <span>WebSockets</span><span>Multiplayer netcode</span><span>Shaders</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="section__num">03</span>
+        <h2 class="section__title">Featured <span class="gradient-text">projects</span></h2>
+        <p class="section__sub">Things I've built and shipped</p>
+      </div>
+
+      <!-- Featured -->
+      <article class="feature reveal">
+        <div class="feature__media">
+          <div class="feature__scene">
+            <span class="feature__badge">Featured</span>
+            <div class="scene-grid"></div>
+            <div class="scene-sun"></div>
+            <div class="scene-storm"></div>
+            <p class="scene-title">B-SHOT<br><span>ROYAL</span></p>
+          </div>
+        </div>
+
+        <div class="feature__body">
+          <p class="feature__eyebrow">Browser game · Three.js</p>
+          <h3 class="feature__title">B-Shot Royal</h3>
+          <p class="feature__desc">
+            A browser-based battle royale built from scratch. Fight AI enemies for loot,
+            build your way out of trouble, and outlast a closing storm to claim the
+            B-Shot Victory.
+          </p>
+          <ul class="feature__list">
+            <li>Full weapon system with multiple gun types</li>
+            <li>Fortnite-style building mechanics</li>
+            <li>Harvesting and loot systems</li>
+            <li>AI enemies that fight back</li>
+          </ul>
+          <div class="chips chips--accent">
+            <span>JavaScript</span><span>Three.js</span><span>Vite</span>
+          </div>
+          <div class="feature__actions">
+            <a href="https://github.com/DJrex500/B-Shot-Royal" target="_blank" rel="noopener" class="btn btn--primary btn--small">
+              View on GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Grid -->
+      <div class="cards">
+        <article class="card tilt reveal" data-delay="1">
+          <div class="card__top">
+            <span class="card__icon">◆</span>
+            <span class="card__tag">Live</span>
+          </div>
+          <h3 class="card__title">Portfolio Site</h3>
+          <p class="card__desc">
+            This site — a hand-built portfolio with a particle canvas, scroll-driven
+            animations and zero frameworks. Pure HTML, CSS and JavaScript.
+          </p>
+          <div class="chips"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <a href="https://github.com/DJrex500/DJrex500.github.io" target="_blank" rel="noopener" class="card__link">
+            View source
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="card tilt reveal" data-delay="2">
+          <div class="card__top">
+            <span class="card__icon">✦</span>
+            <span class="card__tag">Live</span>
+          </div>
+          <h3 class="card__title">GitHub Profile</h3>
+          <p class="card__desc">
+            A custom profile README with live stats, tech badges and a showcase of what
+            I'm currently building.
+          </p>
+          <div class="chips"><span>Markdown</span><span>Design</span></div>
+          <a href="https://github.com/DJrex500" target="_blank" rel="noopener" class="card__link">
+            Visit profile
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="card card--soon tilt reveal" data-delay="3">
+          <div class="card__top">
+            <span class="card__icon">◐</span>
+            <span class="card__tag card__tag--soon">In progress</span>
+          </div>
+          <h3 class="card__title">Multiplayer Arena</h3>
+          <p class="card__desc">
+            Taking B-Shot Royal online — real-time multiplayer over WebSockets with
+            server-authoritative movement and lag compensation.
+          </p>
+          <div class="chips"><span>WebSockets</span><span>Node.js</span></div>
+          <span class="card__link card__link--muted">Coming soon</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section section--alt" id="contact">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="section__num">04</span>
+        <h2 class="section__title">Let's build <span class="gradient-text">something</span></h2>
+        <p class="section__sub">Got an idea, a role, or just want to talk games?</p>
+      </div>
+
+      <div class="contact reveal">
+        <div class="contact__card">
+          <div class="contact__glow"></div>
+          <h3>Drop me a message</h3>
+          <p>I'm always up for interesting projects and good conversations about game dev.</p>
+
+          <form class="form" id="contact-form" novalidate>
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+              <span class="field__error"></span>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+              <span class="field__error"></span>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="What's on your mind?" required></textarea>
+              <span class="field__error"></span>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full">
+              Send message
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 14-7-7 14-2-5-5-2Z"/></svg>
+            </button>
+            <p class="form__note" id="form-note"></p>
+          </form>
+        </div>
+
+        <div class="contact__side">
+          <a class="contact__item" href="mailto:DJrex500@users.noreply.github.com">
+            <span class="contact__item-icon">✉</span>
+            <span>
+              <strong>Email</strong>
+              <em>DJrex500@users.noreply.github.com</em>
+            </span>
+          </a>
+          <a class="contact__item" href="https://github.com/DJrex500" target="_blank" rel="noopener">
+            <span class="contact__item-icon">◈</span>
+            <span>
+              <strong>GitHub</strong>
+              <em>@DJrex500</em>
+            </span>
+          </a>
+          <div class="contact__item contact__item--static">
+            <span class="contact__item-icon">◉</span>
+            <span>
+              <strong>Status</strong>
+              <em>Open to opportunities</em>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="#home" class="nav__logo">
+      <span class="nav__logo-mark">H</span>
+      <span class="nav__logo-text">hirad</span>
+    </a>
+    <p class="footer__text">Built from scratch with HTML, CSS &amp; JavaScript.</p>
+    <p class="footer__copy">© <span id="year"></span> Hirad</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
