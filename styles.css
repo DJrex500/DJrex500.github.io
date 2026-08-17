@@ -909,6 +909,20 @@ main, .nav, .footer { position: relative; z-index: 2; }
   color: var(--frozen-water);
   min-height: 1.2em;
 }
+.form__note.is-success { color: var(--frozen-water); }
+.form__note.is-error { color: #ff8fb0; }
+.form__note a { color: var(--blue-bell); text-decoration: underline; }
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn:disabled { opacity: .6; cursor: wait; transform: none; }
 
 .contact__side { display: grid; gap: 1rem; }
 .contact__item {

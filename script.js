@@ -305,7 +305,12 @@
   function initForm() {
     const form = document.getElementById("contact-form");
     const note = document.getElementById("form-note");
+    const button = document.getElementById("submit-btn");
+    const label = document.getElementById("submit-label");
     if (!form) return;
+
+    // FormSubmit relays submissions to email — no backend needed on GitHub Pages.
+    const ENDPOINT = "https://formsubmit.co/ajax/hiradsamadi20@gmail.com";
 
     function setError(input, message) {
       const field = input.closest(".field");
@@ -314,7 +319,7 @@
       return !message;
     }
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const name = form.elements.name;
@@ -329,16 +334,46 @@
 
       if (!checks.every(Boolean)) {
         note.textContent = "";
+        note.className = "form__note is-error";
         return;
       }
 
-      // No backend on GitHub Pages — hand off to the visitor's mail client.
-      const subject = encodeURIComponent(`Portfolio message from ${name.value.trim()}`);
-      const body = encodeURIComponent(`${message.value.trim()}\n\n— ${name.value.trim()} (${email.value.trim()})`);
-      window.location.href = `mailto:DJrex500@users.noreply.github.com?subject=${subject}&body=${body}`;
+      // Bots that fill the hidden field get a silent no-op.
+      if (form.elements._honey.value) return;
 
-      note.textContent = "Opening your email app…";
-      form.reset();
+      button.disabled = true;
+      label.textContent = "Sending…";
+      note.textContent = "";
+      note.className = "form__note";
+
+      try {
+        const response = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            name: name.value.trim(),
+            email: email.value.trim(),
+            message: message.value.trim(),
+            _subject: `Portfolio message from ${name.value.trim()}`,
+            _template: "table",
+            _captcha: "false"
+          })
+        });
+
+        if (!response.ok) throw new Error(`Request failed (${response.status})`);
+
+        note.textContent = "Thanks! Your message is on its way — I'll get back to you soon.";
+        note.className = "form__note is-success";
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        note.innerHTML =
+          'Something went wrong. Email me directly at <a href="mailto:hiradsamadi20@gmail.com">hiradsamadi20@gmail.com</a>.';
+        note.className = "form__note is-error";
+      } finally {
+        button.disabled = false;
+        label.textContent = "Send message";
+      }
     });
 
     form.querySelectorAll("input, textarea").forEach((input) => {

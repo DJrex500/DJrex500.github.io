@@ -337,6 +337,7 @@
           <p>I'm always up for interesting projects and good conversations about game dev.</p>
 
           <form class="form" id="contact-form" novalidate>
+            <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <div class="field">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" placeholder="Your name" required />
@@ -352,8 +353,8 @@
               <textarea id="message" name="message" rows="4" placeholder="What's on your mind?" required></textarea>
               <span class="field__error"></span>
             </div>
-            <button type="submit" class="btn btn--primary btn--full">
-              Send message
+            <button type="submit" class="btn btn--primary btn--full" id="submit-btn">
+              <span id="submit-label">Send message</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 14-7-7 14-2-5-5-2Z"/></svg>
             </button>
             <p class="form__note" id="form-note"></p>
@@ -361,11 +362,11 @@
         </div>
 
         <div class="contact__side">
-          <a class="contact__item" href="mailto:DJrex500@users.noreply.github.com">
+          <a class="contact__item" href="mailto:hiradsamadi20@gmail.com">
             <span class="contact__item-icon">✉</span>
             <span>
               <strong>Email</strong>
-              <em>DJrex500@users.noreply.github.com</em>
+              <em>hiradsamadi20@gmail.com</em>
             </span>
           </a>
           <a class="contact__item" href="https://github.com/DJrex500" target="_blank" rel="noopener">
