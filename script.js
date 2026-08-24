@@ -1,5 +1,5 @@
 /* ============================================================
-   Hirad — Portfolio interactions
+   Hirad - Portfolio interactions
    Vanilla JS, no dependencies.
    ============================================================ */
 
@@ -309,7 +309,7 @@
     const label = document.getElementById("submit-label");
     if (!form) return;
 
-    // FormSubmit relays submissions to email — no backend needed on GitHub Pages.
+    // FormSubmit relays submissions to email. No backend needed on GitHub Pages.
     const ENDPOINT = "https://formsubmit.co/ajax/hiradsamadi20@gmail.com";
 
     function setError(input, message) {
@@ -362,7 +362,7 @@
 
         if (!response.ok) throw new Error(`Request failed (${response.status})`);
 
-        note.textContent = "Thanks! Your message is on its way — I'll get back to you soon.";
+        note.textContent = "Thanks! Your message is on its way. I'll get back to you soon.";
         note.className = "form__note is-success";
         form.reset();
       } catch (err) {
