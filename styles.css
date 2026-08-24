@@ -556,6 +556,12 @@ main, .nav, .footer { position: relative; z-index: 2; }
 .about__text p { color: var(--text-dim); font-size: 1.05rem; }
 .about__text strong { color: var(--pink-orchid); font-weight: 600; }
 .about__text b { color: inherit; font-weight: 700; font-style: normal; }
+.about__text a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--pink-orchid) 55%, transparent);
+}
+.about__text a:hover { border-bottom-color: var(--pink-orchid); }
 
 .avatar-card {
   position: relative;
@@ -763,7 +769,12 @@ main, .nav, .footer { position: relative; z-index: 2; }
   left: 0;
   color: var(--electric-indigo);
 }
-.feature__actions { margin-top: 1.4rem; }
+.feature__actions {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
 
 .cards {
   display: grid;
